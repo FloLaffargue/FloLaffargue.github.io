@@ -1,15 +1,15 @@
 
-  window.addEventListener("deviceorientation", handleOrientation, true);
-  window.addEventListener("devicemotion", handleMotion)
+window.addEventListener("deviceorientation", handleOrientation, true);
+window.addEventListener("devicemotion", handleMotion)
 
 function displayElement(id, content) {
   document.querySelector(id).textContent = content
 }
 
 function handleMotion(event) {
-  displayElement("#xM", event.acceleration.x)
-  displayElement("#yM", event.acceleration.y)
-  displayElement("#zM", event.acceleration.z)
+  displayElement("#xA", event.acceleration.x)
+  displayElement("#yA", event.acceleration.y)
+  displayElement("#zA", event.acceleration.z)
 
   displayElement("#xR", event.rotationRate.beta)
   displayElement("#yR", event.rotationRate.gamma)
@@ -18,7 +18,6 @@ function handleMotion(event) {
 
 function handleOrientation(event) {
     
-    document.querySelector('#orientation').textContent = event
     displayElement("#xO", event.gamma)
     displayElement("#yO", event.beta)
     displayElement("#zO", event.alpha)

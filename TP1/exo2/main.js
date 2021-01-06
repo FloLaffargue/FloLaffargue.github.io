@@ -6,7 +6,14 @@ function success(position) {
     displayElement("#longitude", position.coords.longitude)
     displayElement("#latitude", position.coords.latitude)
     displayElement("#speed", position.coords.speed)
-    displayElement("#timestamp", position.timestamp)
+
+    const date = new Date(position.timestamp)
+    const hours =  date.getHours()
+    const minutes = date.getMinutes()
+    const seconds = date.getSeconds()
+    const formattedDate = `Il est ${hours} heures, ${minutes} minutes et ${seconds} secondes`
+    displayElement("#timestamp", formattedDate)
+
 }
 
 function error() {
