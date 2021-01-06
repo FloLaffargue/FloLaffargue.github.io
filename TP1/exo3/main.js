@@ -12,7 +12,7 @@ if(rep == "o") {
   }
 
 } else {
-  
+
   window.addEventListener("devicemotion", handleMotion)
 
   function handleMotion(event) {
