@@ -25,10 +25,12 @@ if(rep == "o") {
     displayElement("#zR", event.rotationRate.alpha)
   }
     
-  
-  function displayElement(id, content) {
-    document.querySelector(id).textContent = content
-  }
+}
+
+
+
+function displayElement(id, content) {
+  document.querySelector(id).textContent = content
 }
 
 
