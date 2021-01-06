@@ -5,7 +5,6 @@ document.querySelector("canvas").addEventListener('touchstart', function(e) {
   displayElement("#x", touche.screenX)
   displayElement("#y", touche.screenY)
   
-  document.querySelector('#el').innerHTML = e
 })
 
 
