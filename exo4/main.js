@@ -1,18 +1,14 @@
 document.querySelector("canvas").addEventListener('touchstart', function(e) {
-  alert(e)
-  console.log(e)
+  e.preventDefault()
+  const touche = e.touches[0]
+  displayElement("#x", touche.screenX)
+  displayElement("#y", touche.screenY)
+  
+  document.querySelector('el').textContent = JSON.stringify(e)
 })
 
-function handleOrientation(event) {
-    
-    document.querySelector('#orientation').textContent = event
-    displayElement("#x", event.gamma)
-    displayElement("#y", event.beta)
-    displayElement("#z", event.alpha)
-    displayElement("#absolute", event.alpha)
-  }
 
-  function displayElement(id, content) {
-    document.querySelector(id).textContent = content
+function displayElement(id, content) {
+  document.querySelector(id).textContent = content
 }
-  
+
