@@ -1,4 +1,7 @@
-window.addEventListener("deviceorientation", handleOrientation, true);
+document.querySelector("canvas").addEventListener('touchstart', function(e) {
+  alert(e)
+  console.log(e)
+})
 
 function handleOrientation(event) {
     
