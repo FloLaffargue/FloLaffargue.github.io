@@ -40,7 +40,7 @@ function error() {
 }
 
 function calculerEcartNiceMarseille() {
-    
+    2 * 6371
 }
 
 
