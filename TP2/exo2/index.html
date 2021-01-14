@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cartes</title>
+    <title>Geoloc: exercice 2</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin=""/>
@@ -12,17 +12,38 @@
     </style>
 </head>
 <body>
-    <h1>Cartes</h1>
+    <h1>Geoloc : distance</h1>
+
+    <p>Selectionner une ville pour calculer la distance entre cette même ville et votre position actuelle</p>
+
+    <select name="list" id="list">
+        <option value="0" selected>Villes</option>
+        <option value="nice">Nice</option>
+        <option value="marseille">Marseille</option>
+        <option value="lyon">Lyon</option>
+        <option value="bordeaux">Bordeaux</option>
+        <option value="paris">Paris</option>
+    </select>
+
+    <p>Distance entre ma position actuelle et la ville de <span id="targetCity"></span>: <em id="kms"></em></p>
 
     <div id="mapid"></div>
-
+    
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>
 
-    <!-- <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.3.0"></script> -->
     <script type="text/javascript" src=" https://stamen-maps.a.ssl.fastly.net/js/tile.stamen.js"></script>
 
     <script src="map.js"></script>
+
+    <script>
+        document.querySelector('#list').addEventListener('change', function(e) {
+            if(e.target.value != "0") {
+                document.querySelector('#targetCity').textContent = e.target.value
+                fetchPositionOfTarget(e.target.value)
+            }
+        })
+    </script>
 </body>
 </html>
