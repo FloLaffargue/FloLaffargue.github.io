@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG et Canvas</title>
+</head>
+<body>
+    <h1>Dessiner dans un canvas</h1>
+
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <script>
+
+        const canvas = document.querySelector('#canvas')
+        var ctx = canvas.getContext('2d')
+        var img = new Image()
+
+        img.addEventListener('load', function() {
+            ctx.drawImage(img,10,10)
+
+            ctx.fillStyle = 'red'
+            ctx.fillRect(50,120,100,100)
+            ctx.fillStyle = 'orange'
+            ctx.fillRect(80,170,50,50)
+            ctx.fillStyle = 'yellow'
+            ctx.arc(350, 50, 30, 0, Math.PI * 2, true);
+            ctx.fill()
+            ctx.stroke()
+            triangle()
+            
+        }, false);
+
+        img.src = 'montagne.jpeg'; // définit le chemin de la source
+
+        function triangle() {
+            ctx.beginPath();
+            ctx.moveTo(100, 40);
+            ctx.lineTo(50, 120);
+            ctx.lineTo(150,120)
+            ctx.fillStyle = 'blue'
+            ctx.fill()
+            ctx.strokeStyle = '#4488EE'; //Nuance de bleu
+            ctx.lineWidth = 3;
+            ctx.closePath();
+            ctx.stroke();
+        }
+
+    </script>
+</body>
+</html>
