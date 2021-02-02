@@ -5,46 +5,44 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
-const geometry = new THREE.RingBufferGeometry( 5, 10, 8,8,0,6.3 );
-const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-const texture = new THREE.TextureLoader().load( 'texture.jpg' );
+const geometry = new THREE.SphereGeometry(1, 32, 32 );
+const material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
+const texture = new THREE.TextureLoader().load( 'texture2.jpg' );
 
 // immediately use the texture for material creation
-
 const materialTex = new THREE.MeshBasicMaterial( { map: texture } );
+const sphere = new THREE.Mesh( geometry, materialTex );
+
 const controls = new THREE.OrbitControls( camera, renderer.domElement );
-const ring = new THREE.Mesh( geometry, materialTex );
-/*
-var light = new THREE.DirectionalLight( 0xdddddd, 0.8 );
-light.position.set( -80, 80, 80 );
-*/
+
 const directionalLight = new THREE.DirectionalLight( 0xffffff, 100 );
 scene.add( directionalLight );
-scene.add(ring);
 
 camera.position.z = 100;
-
-// Ajout objet 3D
-const loader = new THREE.GLTFLoader();
-
-loader.load( './monster.gltf', function ( gltf ) {
-    
-    scene.add( gltf.scene );
-
-}, undefined, function ( error ) {
-
-	console.error( error );
-
-} );
 
 const animate = function () {
     requestAnimationFrame( animate );
 
-    ring.rotation.x += 0.01;
-    ring.rotation.y += 0.01;
+    // sphere.rotation.x += 0.01;
+    // sphere.rotation.y += 0.01;
 
     renderer.render( scene, camera );
 };
+
+// Ajout markeur
+var long = localStorage.getItem('lon');
+var lat = localStorage.getItem('lat');
+
+var mark = createSphere()
+var coords = latOrLonToCartesien(long, lat)
+
+mark.position.set(coords.x, coords.y, coords.z)
+scene.add(mark)
+scene.add(sphere);
+
 renderer.render( scene, camera );
 
 animate();
+
+
+
