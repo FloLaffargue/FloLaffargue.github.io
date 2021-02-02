@@ -33,6 +33,14 @@ const animate = function () {
 var long = localStorage.getItem('lon');
 var lat = localStorage.getItem('lat');
 
+/*
+getCountries(function(countries) {
+    // for(i=0; i < 10; i++) {
+    // }
+
+})
+*/
+
 var mark = createSphere()
 var coords = latOrLonToCartesien(long, lat)
 

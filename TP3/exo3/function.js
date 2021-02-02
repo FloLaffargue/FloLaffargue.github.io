@@ -4,6 +4,10 @@ function latOrLonToCartesien(lon, lat) {
     // azimut = longitude
     // inclinaison = latitude
 
+    // Conversion en radian
+    lon = lon * Math.PI/180
+    lat = lat * Math.PI/180
+
     const radius = 1
 
     var x = radius * Math.sin(lat) * Math.cos(lon);
@@ -24,13 +28,13 @@ function createSphere() {
     return sphere
 }
 
-function getCountries() {
+function getCountries(callback) {
 
     fetch('https://restcountries.eu/rest/v2/all')
         .then(resp => {
             resp.json()
                 .then(data => {
-                    // console.log(data)
+                    callback(data)
                 })
         })
 }
