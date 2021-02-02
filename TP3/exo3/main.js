@@ -33,20 +33,24 @@ const animate = function () {
 var long = localStorage.getItem('lon');
 var lat = localStorage.getItem('lat');
 
-/*
-getCountries(function(countries) {
-    // for(i=0; i < 10; i++) {
-    // }
-
-})
-*/
-
-var mark = createSphere()
-var coords = latOrLonToCartesien(long, lat)
-
-mark.position.set(coords.x, coords.y, coords.z)
-scene.add(mark)
 scene.add(sphere);
+
+getCountries(function(countries) {
+    countries.forEach(country => {
+        fixPoint(country)
+    });
+})
+
+function fixPoint(country) {
+
+    console.log(country)
+    var mark = createSphere(country.flag)
+    var coords = latOrLonToCartesien(country.latlng[1], country.latlng[0])
+    
+    mark.position.set(coords.x, coords.y, coords.z)
+    scene.add(mark)
+}
+
 
 renderer.render( scene, camera );
 

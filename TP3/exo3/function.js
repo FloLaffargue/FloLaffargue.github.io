@@ -5,25 +5,27 @@ function latOrLonToCartesien(lon, lat) {
     // inclinaison = latitude
 
     // Conversion en radian
-    lon = lon * Math.PI/180
+    lon = - lon * Math.PI/180
     lat = lat * Math.PI/180
 
     const radius = 1
 
-    var x = radius * Math.sin(lat) * Math.cos(lon);
-    var y = radius * Math.sin(lat) * Math.sin(lon);  
-    var z = radius * Math.cos(lat)
+    var x = radius * Math.cos(lat) * Math.cos(lon);
+    var y = radius * Math.sin(lat);  
+    var z = radius * Math.cos(lat) * Math.sin(lon);  
 
     return {
         x,y,z
     }
 }
 
-function createSphere() {
+function createSphere(flag) {
     
-    const geometry = new THREE.SphereGeometry(0.05, 32, 32 );
+    const geometry = new THREE.SphereGeometry(0.03, 32, 32 );
     const material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
-    const sphere = new THREE.Mesh( geometry, material );
+    const texture = new THREE.TextureLoader().load( flag );
+    const materialTex = new THREE.MeshBasicMaterial( { map: texture } );
+    const sphere = new THREE.Mesh( geometry, materialTex );
 
     return sphere
 }
