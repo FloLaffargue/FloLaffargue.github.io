@@ -1,14 +1,13 @@
-
-function latOrLonToCartesien(lon, lat) {
+function latOrLonToCartesien(lon, lat, cone) {
 
     // azimut = longitude
     // inclinaison = latitude
 
-    // Conversion en radian
+    // Conversion longitude/latitude en valeur radian
     lon = - lon * Math.PI/180
     lat = lat * Math.PI/180
 
-    const radius = 1
+    const radius = 1.03
 
     var x = radius * Math.cos(lat) * Math.cos(lon);
     var y = radius * Math.sin(lat);  
@@ -21,13 +20,26 @@ function latOrLonToCartesien(lon, lat) {
 
 function createSphere(flag) {
     
-    const geometry = new THREE.SphereGeometry(0.03, 32, 32 );
-    const material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
+    const geometry = new THREE.SphereGeometry(0.02, 32, 32 );
     const texture = new THREE.TextureLoader().load( flag );
     const materialTex = new THREE.MeshBasicMaterial( { map: texture } );
     const sphere = new THREE.Mesh( geometry, materialTex );
 
     return sphere
+}
+
+function createCone() {
+
+    var radius = 0.005;
+    var height = 0.20;
+
+    const texture = new THREE.TextureLoader().load( 'texture3.jpg' );
+    const materialTex = new THREE.MeshBasicMaterial( { map: texture } );
+    var cone = new THREE.Mesh(new THREE.ConeBufferGeometry(radius, height, 8, 1, true), materialTex);
+    cone.position.y = height * 0.5;
+    cone.rotation.set(10)
+
+    return cone
 }
 
 function getCountries(callback) {
@@ -41,20 +53,12 @@ function getCountries(callback) {
         })
 }
 
-/*
-function Marker() {
-    // THREE.Object3D.call(this);
+function fixPoint(texture, long, lat) {
 
-    var radius = 0.005;
-    var sphereRadius = 0.02;
-    var height = 0.05;
-
-    var material = new THREE.MeshPhongMaterial({ color: 0xffff00 });
-
-    var marker = new THREE.Mesh(new THREE.SphereBufferGeometry(sphereRadius, 16, 8), material);
-
-    return marker
+    var mark = createSphere(texture)
+    var coords = latOrLonToCartesien(long,lat)
+    
+    mark.position.set(coords.x, coords.y, coords.z)
+    scene.add(mark)
 }
-*/
-
 
