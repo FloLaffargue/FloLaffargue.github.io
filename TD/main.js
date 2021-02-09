@@ -6,8 +6,8 @@ aiguille.src = 'needle.png';
 boussole.src = 'compass.png';
 
 aiguille.addEventListener('load', function() {
-  rotateCanvas(50)
-  rotateSvg(50)
+  rotateCanvas(0)
+  rotateSvg(0)
 }, false);
 
 
@@ -18,7 +18,7 @@ function displayElement(id, content) {
 }
 
 function handleOrientation(event) {
-    // displayElement("#zO", event.alpha)
+    displayElement("#zO", event.alpha)
     rotateCanvas(event.alpha)
     rotateSvg(event.alpha)
     rotateCone(event.alpha)
