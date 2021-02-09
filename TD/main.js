@@ -5,13 +5,14 @@ var aiguille = new Image()
 aiguille.src = 'needle.png'; 
 boussole.src = 'compass.png';
 
-boussole.addEventListener('load', function() {
-    ctx.drawImage(boussole,10,10)
-    ctx.drawImage(aiguille,10,10)
+aiguille.addEventListener('load', function() {
+    ctx.translate(canvas.width/2,canvas.height/2);
+    ctx.rotate(180 * Math.PI/180);
+    ctx.drawImage(aiguille,-aiguille.width/2,-aiguille.width/2)
+    ctx.restore();
 }, false);
 
 window.addEventListener("deviceorientation", handleOrientation, true);
-window.addEventListener("devicemotion", handleMotion)
 
 function displayElement(id, content) {
   document.querySelector(id).textContent = content
@@ -24,12 +25,11 @@ function handleOrientation(event) {
 }
 
 function drawRotated(degrees){
-
   ctx.clearRect(0,0,canvas.width,canvas.height);
   ctx.save();
   ctx.translate(canvas.width/2,canvas.height/2);
-  ctx.rotate(degrees*Math.PI/180);
-  ctx.drawImage(image,-image.width/2,-image.width/2);
+  ctx.rotate(180 * Math.PI/180);
+  ctx.drawImage(aiguille,-aiguille.width/2,-aiguille.width/2)
   ctx.restore();
 }
 
