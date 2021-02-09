@@ -17,7 +17,6 @@ function displayElement(id, content) {
 }
 
 function handleOrientation(event) {
-    displayElement("#zO", event.alpha)
     rotateCanvas(event.alpha)
     rotateSvg(event.alpha)
     rotateCone(event.alpha)
