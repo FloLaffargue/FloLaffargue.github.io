@@ -6,6 +6,7 @@ var longitude;
 var latitude;
 var precision;
 var myPosition = {}
+var compass = new L.Control.Compass()
 
 function success(position) {
     
@@ -23,7 +24,6 @@ function success(position) {
     }).addTo(map);
 
 
-    var compass = new L.Control.Compass()
     map.addControl(compass);
 
     // Cercle
