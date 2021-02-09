@@ -13,19 +13,24 @@ boussole.addEventListener('load', function() {
 window.addEventListener("deviceorientation", handleOrientation, true);
 window.addEventListener("devicemotion", handleMotion)
 
+function displayElement(id, content) {
+  document.querySelector(id).textContent = content
+}
+
 function handleOrientation(event) {
+    displayElement("#zO", event.alpha)
     drawRotated(event.alpha)
     // alert(event.alpha)
 }
 
 function drawRotated(degrees){
 
-  context.clearRect(0,0,canvas.width,canvas.height);
-  context.save();
-  context.translate(canvas.width/2,canvas.height/2);
-  context.rotate(degrees*Math.PI/180);
-  context.drawImage(image,-image.width/2,-image.width/2);
-  context.restore();
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.save();
+  ctx.translate(canvas.width/2,canvas.height/2);
+  ctx.rotate(degrees*Math.PI/180);
+  ctx.drawImage(image,-image.width/2,-image.width/2);
+  ctx.restore();
 }
 
 
