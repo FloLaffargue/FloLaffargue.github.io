@@ -6,7 +6,7 @@ aiguille.src = 'needle.png';
 boussole.src = 'compass.png';
 
 aiguille.addEventListener('load', function() {
-  rotateCanvas(60)
+  // rotateCanvas(90)
 }, false);
 
 
