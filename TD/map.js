@@ -16,12 +16,13 @@ function success(position) {
     myPosition.lat = latitude
     myPosition.long = longitude
 
-    var layer = new L.StamenTileLayer("toner");
-    var map = new L.Map("mapid", {
-        center: new L.LatLng(latitude, longitude),
-        zoom: 4
-    });
-    map.addLayer(layer);
+    var map = L.map('mapid').setView([latitude, longitude], 5);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+
     var compass = new L.Control.Compass()
     map.addControl(compass);
 
