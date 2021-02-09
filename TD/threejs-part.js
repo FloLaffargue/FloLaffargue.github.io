@@ -33,7 +33,7 @@ renderer.render( scene, camera );
 animate();
 
 function rotateCone(degrees) {
-    cone.rotation.z = THREE.Math.degToRad(degrees);
+    cone.rotation.z = THREE.Math.degToRad(-degrees);
 }
 
 
