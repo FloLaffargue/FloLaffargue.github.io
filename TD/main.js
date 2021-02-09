@@ -7,7 +7,6 @@ boussole.src = 'compass.png';
 
 aiguille.addEventListener('load', function() {
   rotateCanvas(0)
-  rotateSvg(90)
 }, false);
 
 window.addEventListener("deviceorientation", handleOrientation, true);
@@ -20,6 +19,7 @@ function handleOrientation(event) {
     displayElement("#zO", event.alpha)
     rotateCanvas(event.alpha)
     rotateSvg(event.alpha)
+    rotateCone(event.alpha)
 }
 
 function rotateCanvas(degrees){
